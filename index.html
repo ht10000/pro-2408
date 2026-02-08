@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Poppins:wght@300;500&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  overflow: hidden;
+  color: white;
+}
+
+/* 🎥 CINEMATIC BACKGROUND */
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, #ff4d6d44, transparent 40%),
+    radial-gradient(circle at 80% 80%, #4d79ff44, transparent 40%),
+    linear-gradient(120deg,#020024,#090979,#000);
+  animation: moveBg 10s infinite alternate ease-in-out;
+  z-index: -2;
+}
+
+@keyframes moveBg {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(35deg); }
+}
+
+/* PAGE LAYOUT */
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.card {
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.6);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 420px;
+  animation: fadeIn 1.5s ease;
+  box-shadow: 0 0 30px rgba(255,0,100,0.25);
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:scale(0.92); }
+  to { opacity:1; transform:scale(1); }
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff0055, #ff4d88);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,0,100,0.6);
+  transition: 0.3s;
+}
+
+button:hover { transform: scale(1.08); }
+
+iframe {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  border: none;
+  margin-top: 15px;
+}
+
+.tap {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* PAGE VISIBILITY */
+#page2, #page3 { display:none; }
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- 🎧 MUSIC (uploaded file) -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1: PROPOSAL -->
+<div class="container" id="page1">
+  <div class="card">
+    <h1>Hey Aryman…</h1>
+    <p>
+     I didn’t want this to be loud or dramatic.  
+    I just wanted it to be honest.
+    I feel something real with you —  
+   calm, curious, and a little intense but real and rare.
+    I don’t know the perfect way to say this,  
+    but I know I wanted to say it *my way*. <br><br>
+      I respect you.  
+    And I’d really love to know how *you* feel —
+    honestly, without pressure.
+    I won’t rush you.
+    And don't know when or how but my 'like' did turn into something else,
+  I THINK I LOVE YOU...I REALLY DO :) 
+    </p>
+    <button onclick="goToPage(2)">Continue</button>
+    <div class="tap">(tap anywhere to start music)</div>
+  </div>
+</div>
+
+<!-- PAGE 2: GOOGLE FORM -->
+<div class="container" id="page2">
+  <div class="card">
+    <h1>One Honest Answer ❤️</h1>
+    <p>
+      Whatever you feel —  
+      I respect it.
+    </p>
+
+    <!-- 🔗 GOOGLE FORM EMBED -->
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdEA4yhXDf18-dvROnv1ldzwn2XwAV5jWbE7GT_6ptHhS0XXw/viewform?usp=publish-editor">
+    </iframe>
+
+    <button onclick="goToPage(3)">Done ✨</button>
+  </div>
+</div>
+
+<!-- PAGE 3: THANK YOU -->
+<div class="container" id="page3">
+  <div class="card">
+    <h1>Thank You 🤍</h1>
+    <p>
+      Thank you for being honest with me.<br><br>
+      Whatever your answer is,  
+      I appreciate you —  
+      and the space we share.
+    </p>
+    <button>Forever ♾️</button>
+  </div>
+</div>
+
+<script>
+const music = document.getElementById("music");
+
+document.addEventListener("click", () => {
+  music.play();
+});
+
+function goToPage(n) {
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page3").style.display = "none";
+  document.getElementById("page" + n).style.display = "flex";
+}
+</script>
+
+</body>
+</html>
